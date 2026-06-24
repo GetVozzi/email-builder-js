@@ -16,15 +16,15 @@ type TValue = {
   samplesDrawerOpen: boolean;
 };
 
-const editorStateStore = create<TValue>(() => ({
+export const editorStateStore = create<TValue>(() => ({
   document: getConfiguration(window.location.hash),
   selectedBlockId: null,
   selectedSidebarTab: 'styles',
   selectedMainTab: 'editor',
   selectedScreenSize: 'desktop',
 
-  inspectorDrawerOpen: true,
-  samplesDrawerOpen: true,
+  inspectorDrawerOpen: false,
+  samplesDrawerOpen: false,
 }));
 
 export function useDocument() {

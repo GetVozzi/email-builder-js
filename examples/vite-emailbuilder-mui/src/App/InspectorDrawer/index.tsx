@@ -29,6 +29,10 @@ export default function InspectorDrawer() {
       open={inspectorDrawerOpen}
       sx={{
         width: inspectorDrawerOpen ? INSPECTOR_DRAWER_WIDTH : 0,
+        '& .MuiDrawer-paper': {
+          position: 'absolute',
+          height: '100%',
+        },
       }}
     >
       <Box sx={{ width: INSPECTOR_DRAWER_WIDTH, height: 49, borderBottom: 1, borderColor: 'divider' }}>
