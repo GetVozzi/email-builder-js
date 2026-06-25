@@ -23,7 +23,7 @@ export const editorStateStore = create<TValue>(() => ({
   selectedMainTab: 'editor',
   selectedScreenSize: 'desktop',
 
-  inspectorDrawerOpen: false,
+  inspectorDrawerOpen: true,
   samplesDrawerOpen: false,
 }));
 
