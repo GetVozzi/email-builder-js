@@ -54,14 +54,15 @@ export const BUTTONS: TButtonProps[] = [
     icon: <SmartButtonOutlined />,
     block: () => ({
       type: 'Button',
+      _isCTA: true,
       data: {
         props: {
           text: 'Button',
-          url: 'https://www.usewaypoint.com',
+          url: '',
         },
         style: { padding: { top: 16, bottom: 16, left: 24, right: 24 } },
       },
-    }),
+    } as any),
   },
   {
     label: 'Image',

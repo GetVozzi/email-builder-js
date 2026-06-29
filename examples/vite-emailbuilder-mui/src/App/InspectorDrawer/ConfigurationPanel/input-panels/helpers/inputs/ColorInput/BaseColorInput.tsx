@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 
 import { AddOutlined, CloseOutlined } from '@mui/icons-material';
 import { ButtonBase, InputLabel, Menu, Stack } from '@mui/material';
@@ -30,6 +30,7 @@ type Props =
 export default function ColorInput({ label, defaultValue, onChange, nullable }: Props) {
   const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
   const [value, setValue] = useState(defaultValue);
+  useEffect(() => { setValue(defaultValue); }, [defaultValue]);
   const handleClickOpen = (event: React.MouseEvent<HTMLButtonElement>) => {
     setAnchorEl(event.currentTarget);
   };

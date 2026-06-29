@@ -4,6 +4,8 @@ import { ZodError } from 'zod';
 import { ToggleButton } from '@mui/material';
 import { ButtonProps, ButtonPropsDefaults, ButtonPropsSchema } from '@usewaypoint/block-button';
 
+import { editorStateStore } from '../../../../documents/editor/EditorContext';
+
 import BaseSidebarPanel from './helpers/BaseSidebarPanel';
 import ColorInput from './helpers/inputs/ColorInput';
 import RadioGroupInput from './helpers/inputs/RadioGroupInput';
@@ -35,8 +37,34 @@ export default function ButtonSidebarPanel({ data, setData }: ButtonSidebarPanel
   const buttonTextColor = data.props?.buttonTextColor ?? ButtonPropsDefaults.buttonTextColor;
   const buttonBackgroundColor = data.props?.buttonBackgroundColor ?? ButtonPropsDefaults.buttonBackgroundColor;
 
+  const handle_vozzi_link = () => {
+    const blockId = (editorStateStore.getState() as any).selectedBlockId;
+    if (blockId) {
+      window.dispatchEvent(new CustomEvent('vozziCTAButtonInserted', { detail: { blockId } }));
+    }
+  };
+
   return (
     <BaseSidebarPanel title="Button block">
+      <div style={{ marginBottom: 12 }}>
+        <button
+          type="button"
+          onClick={handle_vozzi_link}
+          style={{
+            width: '100%',
+            padding: '8px 12px',
+            background: '#00D59B',
+            color: '#fff',
+            border: 'none',
+            borderRadius: 4,
+            cursor: 'pointer',
+            fontSize: 13,
+            fontWeight: 600,
+          }}
+        >
+          Set Vozzi Link
+        </button>
+      </div>
       <TextInput
         label="Text"
         defaultValue={text}

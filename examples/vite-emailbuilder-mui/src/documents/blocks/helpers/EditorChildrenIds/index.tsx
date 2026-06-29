@@ -22,6 +22,9 @@ export type EditorChildrenIdsProps = {
 export default function EditorChildrenIds({ childrenIds, onChange }: EditorChildrenIdsProps) {
   const appendBlock = (block: TEditorBlock) => {
     const blockId = generateId();
+    if ((block as any)._isCTA) {
+      window.dispatchEvent(new CustomEvent('vozziCTAButtonInserted', { detail: { blockId } }));
+    }
     return onChange({
       blockId,
       block,
@@ -31,6 +34,9 @@ export default function EditorChildrenIds({ childrenIds, onChange }: EditorChild
 
   const insertBlock = (block: TEditorBlock, index: number) => {
     const blockId = generateId();
+    if ((block as any)._isCTA) {
+      window.dispatchEvent(new CustomEvent('vozziCTAButtonInserted', { detail: { blockId } }));
+    }
     const newChildrenIds = [...(childrenIds || [])];
     newChildrenIds.splice(index, 0, blockId);
     return onChange({
