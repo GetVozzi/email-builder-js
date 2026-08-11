@@ -2,26 +2,19 @@ import React from 'react';
 
 import { MonitorOutlined, PhoneIphoneOutlined } from '@mui/icons-material';
 import { Box, Stack, SxProps, ToggleButton, ToggleButtonGroup, Tooltip } from '@mui/material';
-import { Reader } from '@usewaypoint/email-builder';
 
 import EditorBlock from '../../documents/editor/EditorBlock';
 import {
   setSelectedScreenSize,
-  useDocument,
   useSelectedMainTab,
   useSelectedScreenSize,
 } from '../../documents/editor/EditorContext';
 import ToggleInspectorPanelButton from '../InspectorDrawer/ToggleInspectorPanelButton';
 
-import DownloadJson from './DownloadJson';
 import HtmlPanel from './HtmlPanel';
-import ImportJson from './ImportJson';
-import JsonPanel from './JsonPanel';
 import MainTabsGroup from './MainTabsGroup';
-import ShareButton from './ShareButton';
 
 export default function TemplatePanel() {
-  const document = useDocument();
   const selectedMainTab = useSelectedMainTab();
   const selectedScreenSize = useSelectedScreenSize();
 
@@ -58,16 +51,8 @@ export default function TemplatePanel() {
             <EditorBlock id="root" />
           </Box>
         );
-      case 'preview':
-        return (
-          <Box sx={mainBoxSx}>
-            <Reader document={document} rootBlockId="root" />
-          </Box>
-        );
       case 'html':
         return <HtmlPanel />;
-      case 'json':
-        return <JsonPanel />;
     }
   };
 
@@ -93,8 +78,6 @@ export default function TemplatePanel() {
             <MainTabsGroup />
           </Stack>
           <Stack direction="row" spacing={2}>
-            <DownloadJson />
-            <ImportJson />
             <ToggleButtonGroup value={selectedScreenSize} exclusive size="small" onChange={handleScreenSizeChange}>
               <ToggleButton value="desktop">
                 <Tooltip title="Desktop view">
@@ -107,7 +90,6 @@ export default function TemplatePanel() {
                 </Tooltip>
               </ToggleButton>
             </ToggleButtonGroup>
-            <ShareButton />
           </Stack>
         </Stack>
         <ToggleInspectorPanelButton />

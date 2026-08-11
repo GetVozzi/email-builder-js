@@ -23,7 +23,7 @@ export function mount(element: HTMLElement, options: MountOptions = {}) {
       root: {
         type: 'EmailLayout',
         data: {
-          backdropColor: options.teamColor,
+          backdropColor: '#23283c',
           canvasColor: '#FFFFFF',
           textColor: '#262626',
           fontFamily: 'MODERN_SANS',
@@ -83,6 +83,26 @@ export function updateButtonBlock(blockId: string, url: string, label: string, c
           text: label || existingBlock.data?.props?.text || 'Button',
           url: url,
           ...(color ? { buttonBackgroundColor: color } : {}),
+        },
+      },
+    },
+  } as any);
+}
+
+export function updateImageBlock(blockId: string, url: string) {
+  const state = editorStateStore.getState();
+  const doc = state.document as any;
+  const existingBlock = doc[blockId];
+  if (!existingBlock) return;
+
+  setDocument({
+    [blockId]: {
+      ...existingBlock,
+      data: {
+        ...existingBlock.data,
+        props: {
+          ...(existingBlock.data?.props || {}),
+          url: url,
         },
       },
     },

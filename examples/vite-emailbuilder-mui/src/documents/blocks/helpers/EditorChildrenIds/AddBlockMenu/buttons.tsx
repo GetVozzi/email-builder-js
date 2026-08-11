@@ -2,6 +2,7 @@ import React from 'react';
 
 import {
   AccountCircleOutlined,
+  BorderBottomOutlined,
   Crop32Outlined,
   HMobiledataOutlined,
   HorizontalRuleOutlined,
@@ -28,6 +29,19 @@ export const BUTTONS: TButtonProps[] = [
       type: 'Heading',
       data: {
         props: { text: 'Hello friend' },
+        style: {
+          padding: { top: 16, bottom: 16, left: 24, right: 24 },
+        },
+      },
+    }),
+  },
+  {
+    label: 'Footer',
+    icon: <BorderBottomOutlined />,
+    block: () => ({
+      type: 'Footer',
+      data: {
+        props: { text: 'Thanks,\n[Your Team Name]' },
         style: {
           padding: { top: 16, bottom: 16, left: 24, right: 24 },
         },

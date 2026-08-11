@@ -123,7 +123,7 @@ export const ButtonPropsDefaults = {
   size: 'medium',
   buttonStyle: 'rounded',
   buttonTextColor: '#FFFFFF',
-  buttonBackgroundColor: '#999999',
+  buttonBackgroundColor: '#000000',
 } as const;
 
 export function Button({ style, props }: ButtonProps) {

@@ -22,6 +22,7 @@ function cloneBlock(document: TEditorConfiguration, blockId: string): TEditorBlo
     case 'Avatar':
     case 'Button':
     case 'Divider':
+    case 'Footer':
     case 'Heading':
     case 'Html':
     case 'Image':

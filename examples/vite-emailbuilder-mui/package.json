@@ -18,6 +18,7 @@
     "@usewaypoint/block-columns-container": "^0.0.3",
     "@usewaypoint/block-container": "^0.0.2",
     "@usewaypoint/block-divider": "^0.0.4",
+    "@usewaypoint/block-footer": "^0.0.1",
     "@usewaypoint/block-heading": "^0.0.3",
     "@usewaypoint/block-html": "^0.0.3",
     "@usewaypoint/block-image": "^0.0.5",
