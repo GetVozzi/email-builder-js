@@ -84,14 +84,13 @@ export type FooterProps = z.infer<typeof FooterPropsSchema>;
 
 export const FooterPropsDefaults = {
   text: '',
-  fontSize: 12,
-  color: '#7E8299',
+  fontSize: 14,
 } as const;
 
 export function Footer({ props, style }: FooterProps) {
   const text = props?.text ?? FooterPropsDefaults.text;
   const fStyle: CSSProperties = {
-    color: style?.color ?? FooterPropsDefaults.color,
+    color: style?.color ?? undefined,
     backgroundColor: style?.backgroundColor ?? undefined,
     fontWeight: style?.fontWeight ?? 'normal',
     textAlign: style?.textAlign ?? 'left',

@@ -2,13 +2,17 @@
 
 exports[`block-text renders with default values 1`] = `
 <DocumentFragment>
-  <div />
+  <div
+    style="font-size: 14px;"
+  />
 </DocumentFragment>
 `;
 
 exports[`block-text renders with safe markdown 1`] = `
 <DocumentFragment>
-  <div>
+  <div
+    style="font-size: 14px;"
+  >
     <p>
       This 
       <span>
@@ -64,7 +68,9 @@ exports[`block-text renders with safe markdown 1`] = `
 
 exports[`block-text renders without markdown 1`] = `
 <DocumentFragment>
-  <div>
+  <div
+    style="font-size: 14px;"
+  >
     ## This is not &lt;span&gt;markdown&lt;/span&gt;
   </div>
 </DocumentFragment>
@@ -72,7 +78,9 @@ exports[`block-text renders without markdown 1`] = `
 
 exports[`block-text sanitizes HTML 1`] = `
 <DocumentFragment>
-  <div>
+  <div
+    style="font-size: 14px;"
+  >
     
 
     <img

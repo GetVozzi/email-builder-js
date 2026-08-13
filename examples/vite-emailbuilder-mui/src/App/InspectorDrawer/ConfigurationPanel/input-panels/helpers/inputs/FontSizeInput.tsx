@@ -7,11 +7,11 @@ import RawSliderInput from './raw/RawSliderInput';
 
 type Props = {
   label: string;
-  defaultValue: number;
+  defaultValue: number | null;
   onChange: (v: number) => void;
 };
 export default function FontSizeInput({ label, defaultValue, onChange }: Props) {
-  const [value, setValue] = useState(defaultValue);
+  const [value, setValue] = useState(defaultValue ?? 14);
   const handleChange = (value: number) => {
     setValue(value);
     onChange(value);

@@ -87,13 +87,14 @@ export type TextProps = z.infer<typeof TextPropsSchema>;
 
 export const TextPropsDefaults = {
   text: '',
+  fontSize: 14,
 };
 
 export function Text({ style, props }: TextProps) {
   const wStyle: CSSProperties = {
     color: style?.color ?? undefined,
     backgroundColor: style?.backgroundColor ?? undefined,
-    fontSize: style?.fontSize ?? undefined,
+    fontSize: style?.fontSize ?? TextPropsDefaults.fontSize,
     fontFamily: getFontFamily(style?.fontFamily),
     fontWeight: style?.fontWeight ?? undefined,
     textAlign: style?.textAlign ?? undefined,

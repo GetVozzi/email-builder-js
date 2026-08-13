@@ -43,6 +43,7 @@ export const BUTTONS: TButtonProps[] = [
       data: {
         props: { text: 'Thanks,\n[Your Team Name]' },
         style: {
+          fontSize: 14,
           padding: { top: 16, bottom: 16, left: 24, right: 24 },
         },
       },
@@ -56,6 +57,7 @@ export const BUTTONS: TButtonProps[] = [
       data: {
         props: { text: 'My new text block' },
         style: {
+          fontSize: 14,
           padding: { top: 16, bottom: 16, left: 24, right: 24 },
           fontWeight: 'normal',
         },
