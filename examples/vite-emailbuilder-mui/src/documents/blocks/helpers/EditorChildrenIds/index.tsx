@@ -25,6 +25,9 @@ export default function EditorChildrenIds({ childrenIds, onChange }: EditorChild
     if ((block as any)._isCTA) {
       window.dispatchEvent(new CustomEvent('vozziCTAButtonInserted', { detail: { blockId } }));
     }
+    if ((block as any)._autoUpload) {
+      window.dispatchEvent(new CustomEvent('vozziImageUploadRequested', { detail: { blockId } }));
+    }
     return onChange({
       blockId,
       block,
@@ -36,6 +39,9 @@ export default function EditorChildrenIds({ childrenIds, onChange }: EditorChild
     const blockId = generateId();
     if ((block as any)._isCTA) {
       window.dispatchEvent(new CustomEvent('vozziCTAButtonInserted', { detail: { blockId } }));
+    }
+    if ((block as any)._autoUpload) {
+      window.dispatchEvent(new CustomEvent('vozziImageUploadRequested', { detail: { blockId } }));
     }
     const newChildrenIds = [...(childrenIds || [])];
     newChildrenIds.splice(index, 0, blockId);

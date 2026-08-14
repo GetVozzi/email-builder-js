@@ -23,7 +23,7 @@ type ImageSidebarPanelProps = {
 };
 export default function ImageSidebarPanel({ data, setData }: ImageSidebarPanelProps) {
   const [, setErrors] = useState<ZodError | null>(null);
-  const [sourceMode, setSourceMode] = useState<'url' | 'upload'>('url');
+  const [sourceMode, setSourceMode] = useState<'url' | 'upload'>(data.props?.url ? 'url' : 'upload');
 
   const updateData = (d: unknown) => {
     const res = ImagePropsSchema.safeParse(d);

@@ -85,16 +85,17 @@ export const BUTTONS: TButtonProps[] = [
     icon: <ImageOutlined />,
     block: () => ({
       type: 'Image',
+      _autoUpload: true,
       data: {
         props: {
-          url: 'https://assets.usewaypoint.com/sample-image.jpg',
-          alt: 'Sample product',
+          url: null,
+          alt: '',
           contentAlignment: 'middle',
           linkHref: null,
         },
         style: { padding: { top: 16, bottom: 16, left: 24, right: 24 } },
       },
-    }),
+    } as any),
   },
   {
     label: 'Avatar',
