@@ -6,16 +6,24 @@ import { renderToStaticMarkup } from '@usewaypoint/email-builder';
 
 import App from './App';
 import { editorStateStore, resetDocument, setDocument } from './documents/editor/EditorContext';
+import { setFooterHtml } from './footerStore';
 import theme from './theme';
+
+export { setFooterHtml };
 
 type MountOptions = {
   onChange?: (html: string, document: unknown) => void;
   initialDocument?: unknown;
   teamColor?: string;
   teamTextColor?: string;
+  footerHtml?: string;
 };
 
 export function mount(element: HTMLElement, options: MountOptions = {}) {
+  if (options.footerHtml) {
+    setFooterHtml(options.footerHtml);
+  }
+
   if (options.initialDocument) {
     resetDocument(options.initialDocument as any);
   } else if (options.teamColor) {

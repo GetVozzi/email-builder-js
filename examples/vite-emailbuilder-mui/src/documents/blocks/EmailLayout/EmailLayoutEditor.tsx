@@ -2,6 +2,7 @@ import React from 'react';
 
 import { useCurrentBlockId } from '../../editor/EditorBlock';
 import { setDocument, setSelectedBlockId, useDocument } from '../../editor/EditorContext';
+import { useFooterHtml } from '../../../footerStore';
 import EditorChildrenIds from '../helpers/EditorChildrenIds';
 
 import { EmailLayoutProps } from './EmailLayoutPropsSchema';
@@ -34,8 +35,10 @@ export default function EmailLayoutEditor(props: EmailLayoutProps) {
   const childrenIds = props.childrenIds ?? [];
   const document = useDocument();
   const currentBlockId = useCurrentBlockId();
+  const footerHtml = useFooterHtml();
 
   return (
+    <>
     <div
       onClick={() => {
         setSelectedBlockId(null);
@@ -99,5 +102,12 @@ export default function EmailLayoutEditor(props: EmailLayoutProps) {
         </tbody>
       </table>
     </div>
+    {footerHtml && (
+      <div
+        style={{ pointerEvents: 'none', userSelect: 'none' }}
+        dangerouslySetInnerHTML={{ __html: footerHtml }}
+      />
+    )}
+    </>
   );
 }
