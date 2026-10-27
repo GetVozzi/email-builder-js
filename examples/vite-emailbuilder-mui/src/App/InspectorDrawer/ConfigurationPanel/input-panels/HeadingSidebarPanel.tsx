@@ -1,10 +1,11 @@
-import React, { useState } from 'react';
+import React, { useRef, useState } from 'react';
 import { ZodError } from 'zod';
 
 import { ToggleButton } from '@mui/material';
 import { HeadingProps, HeadingPropsDefaults, HeadingPropsSchema } from '@usewaypoint/block-heading';
 
 import BaseSidebarPanel from './helpers/BaseSidebarPanel';
+import DynamicFieldAndEmojiButtons from './helpers/DynamicFieldAndEmojiButtons';
 import RadioGroupInput from './helpers/inputs/RadioGroupInput';
 import TextInput from './helpers/inputs/TextInput';
 import MultiStylePropertyPanel from './helpers/style-inputs/MultiStylePropertyPanel';
@@ -15,6 +16,7 @@ type HeadingSidebarPanelProps = {
 };
 export default function HeadingSidebarPanel({ data, setData }: HeadingSidebarPanelProps) {
   const [, setErrors] = useState<ZodError | null>(null);
+  const inputRef = useRef<HTMLTextAreaElement>(null);
 
   const updateData = (d: unknown) => {
     const res = HeadingPropsSchema.safeParse(d);
@@ -26,16 +28,21 @@ export default function HeadingSidebarPanel({ data, setData }: HeadingSidebarPan
     }
   };
 
+  const text = data.props?.text ?? HeadingPropsDefaults.text;
+  const updateText = (text: string) => updateData({ ...data, props: { ...data.props, text } });
+
   return (
     <BaseSidebarPanel title="Heading block">
-      <TextInput
-        label="Content"
-        rows={3}
-        defaultValue={data.props?.text ?? HeadingPropsDefaults.text}
-        onChange={(text) => {
-          updateData({ ...data, props: { ...data.props, text } });
-        }}
-      />
+      <div>
+        <DynamicFieldAndEmojiButtons inputRef={inputRef} value={text} onChange={updateText} />
+        <TextInput
+          label="Content"
+          rows={3}
+          InputProps={{ inputRef }}
+          defaultValue={text}
+          onChange={updateText}
+        />
+      </div>
       <RadioGroupInput
         label="Level"
         defaultValue={data.props?.level ?? HeadingPropsDefaults.level}

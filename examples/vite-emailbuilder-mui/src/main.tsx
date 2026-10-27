@@ -5,6 +5,7 @@ import { CssBaseline, ThemeProvider } from '@mui/material';
 import { renderToStaticMarkup } from '@usewaypoint/email-builder';
 
 import App from './App';
+import { DynamicField, setDynamicFields } from './dynamicFieldsStore';
 import { editorStateStore, resetDocument, setDocument } from './documents/editor/EditorContext';
 import { setFooterHtml } from './footerStore';
 import theme from './theme';
@@ -17,9 +18,12 @@ type MountOptions = {
   teamColor?: string;
   teamTextColor?: string;
   footerHtml?: string;
+  dynamicFields?: DynamicField[];
 };
 
 export function mount(element: HTMLElement, options: MountOptions = {}) {
+  setDynamicFields(options.dynamicFields || []);
+
   if (options.footerHtml) {
     setFooterHtml(options.footerHtml);
   }
